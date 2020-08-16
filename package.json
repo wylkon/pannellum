@@ -15,9 +15,20 @@
   },
   "license": "MIT",
   "homepage": "https://pannellum.org/",
-  "main": "build/pannellum.js",
+  "main": "build/index.js",
   "keywords": [
     "panorama",
     "viewer"
-  ]
+  ],
+  "scripts": {
+    "buildjs": "babel -d build/ src/js --presets minify",
+    "buildcss": "cleancss -o build/pannellum.css src/css/pannellum.css",
+    "build": "npm run buildjs && npm run buildcss",
+    "prepublish": "npm run build"
+  },
+  "optionalDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-minify": "^0.4.3",
+    "clean-css-cli": "^4.1.11"
+  }
 }
